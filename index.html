@@ -1,0 +1,59 @@
+﻿<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Pasaporte Digital</title>
+    <meta name="theme-color" content="#6e2b1f" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app__header">
+        <h1>Pasaporte Digital</h1>
+        <p id="datasetLabel">ColecciÃ³n: LOG</p>
+      </header>
+
+      <section class="controls">
+        <label for="datasetSelect">ColecciÃ³n</label>
+        <select id="datasetSelect">
+          <option value="LOG">LOG</option>
+          <option value="RIO">RIO</option>
+          <option value="ESP">ESP</option>
+          <option value="EUR">EUR</option>
+          <option value="MUN">MUN</option>
+          <option value="MAR">MAR</option>
+        </select>
+        <button id="resetTokenBtn" type="button">Cambiar token Airtable</button>
+      </section>
+
+      <section class="passport" id="passport">
+        <article class="page" id="pageCard">
+          <div class="page__top">
+            <p class="page__number" id="pageNumber">PÃ¡gina 1/1</p>
+            <span class="stamp" id="stampBadge" hidden>SELLADO</span>
+          </div>
+          <h2 id="placeName">Cargando...</h2>
+          <p id="coords">â€”</p>
+          <a id="placeUrl" href="#" target="_blank" rel="noreferrer noopener" hidden>Abrir enlace</a>
+          <p id="stampDate"></p>
+
+          <div class="page__actions">
+            <button id="stampBtn" type="button">Sellar</button>
+          </div>
+        </article>
+      </section>
+
+      <nav class="pager">
+        <button id="prevBtn" type="button">â—€ Anterior</button>
+        <button id="nextBtn" type="button">Siguiente â–¶</button>
+      </nav>
+
+      <p class="status" id="status"></p>
+    </main>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
+

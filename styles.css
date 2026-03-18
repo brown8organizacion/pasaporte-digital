@@ -1,0 +1,102 @@
+﻿:root {
+  color-scheme: light;
+  --ink: #2a1d17;
+  --bg: #efe7dd;
+  --paper: #f8f3eb;
+  --accent: #6e2b1f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: radial-gradient(circle at top, #fff9f2, var(--bg));
+  color: var(--ink);
+}
+
+.app {
+  min-height: 100dvh;
+  padding: 1rem;
+  max-width: 460px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.app__header h1 { margin: 0; font-size: 1.6rem; }
+.app__header p { margin: 0.3rem 0 0; opacity: 0.8; }
+
+.controls { display: grid; gap: 0.4rem; }
+select, button {
+  font: inherit;
+  border-radius: 10px;
+  border: 1px solid #c8b7a7;
+  padding: 0.65rem 0.8rem;
+}
+
+#resetTokenBtn {
+  background: #fff;
+  color: var(--ink);
+}
+
+.passport { perspective: 1200px; }
+.page {
+  background: var(--paper);
+  border: 2px solid #d8c5af;
+  border-radius: 14px;
+  padding: 1rem;
+  min-height: 300px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.35s ease;
+}
+
+.page.flip { transform: rotateY(-14deg); }
+
+.page__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page__number { margin: 0; opacity: .7; font-size: .95rem; }
+
+.stamp {
+  color: white;
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+#placeName { margin: .8rem 0 .4rem; font-size: 1.5rem; }
+#coords { margin: 0 0 .5rem; opacity: .85; }
+#stampDate { font-size: .9rem; color: #7a4d37; }
+
+#placeUrl { color: var(--accent); font-weight: 600; }
+
+.page__actions {
+  margin-top: 1rem;
+}
+
+#stampBtn {
+  width: 100%;
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .5rem;
+}
+
+.status {
+  margin: 0;
+  min-height: 1.2rem;
+  font-size: .9rem;
+  opacity: .8;
+}
+

@@ -1,0 +1,10 @@
+﻿{
+  "name": "Pasaporte Digital",
+  "short_name": "Pasaporte",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#efe7dd",
+  "theme_color": "#6e2b1f",
+  "icons": []
+}
+
