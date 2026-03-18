@@ -74,7 +74,7 @@ async function fetchRecords() {
   url.searchParams.set("view", AIRTABLE_VIEW_ID);
   url.searchParams.set("maxRecords", "200");
 
-  setStatus("Cargando pÃ¡ginas...");
+  setStatus("Cargando páginas...");
 
   const res = await fetch(url, {
     headers: {
@@ -84,7 +84,7 @@ async function fetchRecords() {
 
   if (!res.ok) {
     if (res.status === 401) {
-      throw new Error("Airtable 401: token invÃ¡lido. Pulsa 'Cambiar token Airtable'.");
+      throw new Error("Airtable 401: token inválido. Pulsa 'Cambiar token Airtable'.");
     }
     if (res.status === 403) {
       throw new Error(
@@ -100,13 +100,13 @@ async function fetchRecords() {
     .filter((r) => {
       const bag = r.rawFields;
       const candidate =
-        bag.Coleccion ?? bag.ColecciÃ³n ?? bag.Tipo ?? bag.Tag ?? bag.Codigo ?? bag.CÃ³digo;
+        bag.Coleccion ?? bag.Colección ?? bag.Tipo ?? bag.Tag ?? bag.Codigo ?? bag.Código;
       if (!candidate) return true;
       return String(candidate).toUpperCase() === state.dataset;
     });
   state.index = 0;
   render();
-  setStatus(`${state.records.length} pÃ¡ginas cargadas.`);
+  setStatus(`${state.records.length} páginas cargadas.`);
 }
 
 function animateFlip() {
@@ -118,9 +118,9 @@ function render() {
   const total = state.records.length;
 
   if (!total) {
-    els.pageNumber.textContent = "PÃ¡gina 0/0";
+    els.pageNumber.textContent = "Pagina 0/0";
     els.placeName.textContent = "Sin resultados";
-    els.coords.textContent = "Revisa la colecciÃ³n o el token.";
+    els.coords.textContent = "Revisa la colección o el token.";
     els.placeUrl.hidden = true;
     els.stampDate.textContent = "";
     els.stampBadge.hidden = true;
@@ -130,8 +130,8 @@ function render() {
   const rec = state.records[state.index];
   const stamp = state.stamps[recordKey(rec)];
 
-  els.datasetLabel.textContent = `ColecciÃ³n: ${state.dataset}`;
-  els.pageNumber.textContent = `PÃ¡gina ${state.index + 1}/${total}`;
+  els.datasetLabel.textContent = `Coleccion: ${state.dataset}`;
+  els.pageNumber.textContent = `Pagina ${state.index + 1}/${total}`;
   els.placeName.textContent = rec.name;
   els.coords.textContent = rec.coords || "Coordenadas no disponibles";
 
@@ -150,7 +150,7 @@ function render() {
     els.stampBadge.hidden = true;
     els.stampDate.textContent = rec.sealDateFromAirtable
       ? `Sello BD: ${rec.sealDateFromAirtable}`
-      : "AÃºn sin sello";
+      : "Aun sin sello";
     els.stampBtn.textContent = "Sellar";
   }
 
@@ -168,7 +168,7 @@ function toggleStamp() {
     setStatus("Sello quitado.");
   } else {
     state.stamps[key] = new Date().toISOString();
-    setStatus("PÃ¡gina sellada.");
+    setStatus("Página sellada.");
   }
   saveStamps();
   render();
@@ -203,7 +203,7 @@ els.datasetSelect.addEventListener("change", async (e) => {
 
 els.resetTokenBtn.addEventListener("click", () => {
   localStorage.removeItem("airtable-token");
-  setStatus("Token borrado. Recarga la pÃ¡gina para introducir uno nuevo.");
+  setStatus("Token borrado. Recarga la página para introducir uno nuevo.");
 });
 
 if ("serviceWorker" in navigator) {
@@ -215,4 +215,3 @@ if ("serviceWorker" in navigator) {
 fetchRecords().catch((err) => {
   setStatus(`No se pudo cargar: ${err.message}`);
 });
-
